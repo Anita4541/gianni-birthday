@@ -1,4 +1,4 @@
-html_content = """<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
@@ -43,7 +43,12 @@ html_content = """<!DOCTYPE html>
     <h1>🎂 Tanti auguri a te, Gianni! 🎶🎈</h1>
     <p>Tanti auguri a te! 希望我们越来越好！ 🎉</p>
     
-    <audio id="birthday-song" src="happy_birthday.mp3"></audio>
+    <!-- 直接使用 Bensound 的音乐外链 -->
+    <audio id="birthday-song" controls>
+        <source src="https://www.bensound.com/bensound-music/bensound-happyrock.mp3" type="audio/mpeg">
+        您的浏览器不支持音频播放。
+    </audio>
+
     <button class="music-btn" onclick="document.getElementById('birthday-song').play()">🎵 点击播放生日快乐歌 🎵</button>
 
     <script>
@@ -52,11 +57,4 @@ html_content = """<!DOCTYPE html>
         };
     </script>
 </body>
-</html>"""
-
-# 生成 birthday.html
-file_path = "birthday.html"
-with open(file_path, "w", encoding="utf-8") as file:
-    file.write(html_content)
-
-print("✅ birthday.html 已成功生成！")
+</html>
