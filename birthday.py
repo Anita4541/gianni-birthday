@@ -1,100 +1,62 @@
-import webbrowser
-
-# 生日网页 HTML 代码
 html_content = """<!DOCTYPE html>
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎉 Happy Birthday, Gianni! 🎉</title>
+    <title>Happy Birthday, Gianni! 🎂🎶🎈</title>
     <style>
         body {
-            background-color: #ffe0e6;
+            background-color: pink;
             text-align: center;
-            font-family: "Arial", sans-serif;
-            overflow: hidden;
+            font-family: Arial, sans-serif;
         }
         h1 {
-            font-size: 50px;
             color: #ff4081;
-            text-shadow: 3px 3px 6px rgba(255, 64, 129, 0.5);
+            font-size: 3rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
         }
-        .cake {
-            font-size: 100px;
-            margin: 20px;
-            animation: bounce 1.5s infinite;
+        p {
+            color: #d81b60;
+            font-size: 1.5rem;
         }
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-        .btn {
+        .music-btn {
             background-color: #ff4081;
             color: white;
-            padding: 15px 30px;
-            font-size: 20px;
             border: none;
-            border-radius: 10px;
+            padding: 15px;
+            font-size: 1.2rem;
             cursor: pointer;
-            margin-top: 20px;
+            border-radius: 8px;
         }
-        .btn:hover {
-            background-color: #e91e63;
+        .music-btn:hover {
+            background-color: #d81b60;
         }
-        /* 滚动动画 */
-        .balloon {
-            position: absolute;
-            font-size: 40px;
-            animation: float 5s infinite ease-in-out;
-        }
-        @keyframes float {
-            0% { transform: translateY(100vh); }
-            100% { transform: translateY(-100vh); }
+        .emoji {
+            font-size: 2rem;
+            display: inline-block;
+            margin: 10px;
         }
     </style>
 </head>
 <body>
-
-    <h1>🎈 Tanti auguri a te, Gianni! 🎈</h1>
-    <div class="cake">🎂</div>
-    <p style="font-size: 24px; color: #ff4081;">Tanti auguri a te！希望我们越来越好！🎉</p>
-
-    <button class="btn" onclick="playMusic()">🎶 点击播放生日快乐歌 🎶</button>
-
-    <audio id="birthdaySong" controls>
-        <source src="https://www.bensound.com/bensound-music/bensound-happyrock.mp3" type="audio/mpeg">
-        Your browser does not support the audio tag.
-    </audio>
+    <h1>🎂 Tanti auguri a te, Gianni! 🎶🎈</h1>
+    <p>Tanti auguri a te! 希望我们越来越好！ 🎉</p>
+    
+    <audio id="birthday-song" src="happy_birthday.mp3"></audio>
+    <button class="music-btn" onclick="document.getElementById('birthday-song').play()">🎵 点击播放生日快乐歌 🎵</button>
 
     <script>
-        function playMusic() {
-            let song = document.getElementById("birthdaySong");
-            song.play().catch(error => console.log("播放失败，可能是浏览器限制:", error));
-        }
-
-        // 只生成 🎂🎶🎈 滚动动画
-        function createBalloons() {
-            let colors = ['🎂', '🎶', '🎈'];
-            for (let i = 0; i < 15; i++) {
-                let balloon = document.createElement("div");
-                balloon.className = "balloon";
-                balloon.innerHTML = colors[Math.floor(Math.random() * colors.length)];
-                balloon.style.left = Math.random() * 100 + "vw";
-                balloon.style.animationDuration = Math.random() * 3 + 4 + "s";
-                document.body.appendChild(balloon);
-            }
-        }
-        createBalloons();
+        document.getElementById('birthday-song').onended = function() {
+            alert("🎂 生日快乐, Gianni! 🎶🎈");
+        };
     </script>
-
 </body>
-</html>
-"""
+</html>"""
 
-# 1. 创建 HTML 文件
-file_path = "gianni_birthday.html"
+# 生成 birthday.html
+file_path = "birthday.html"
 with open(file_path, "w", encoding="utf-8") as file:
     file.write(html_content)
 
-# 2. 用默认浏览器打开 HTML 文件
-webbrowser.open(file_path)
+print("✅ birthday.html 已成功生成！")
