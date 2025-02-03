@@ -30,16 +30,47 @@
             color: #d81b60;
             font-size: 1.5rem;
         }
-        .cake {
-            width: 120px;
-            margin: 20px auto;
+        .music-btn {
+            background-color: #ff4081;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
             cursor: pointer;
-            transition: all 0.5s ease;
+            border-radius: 8px;
+            margin-top: 20px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s;
         }
-        .cake-blown {
-            filter: brightness(0.7);
-            transform: scale(0.9);
+        .music-btn:hover {
+            background-color: #d81b60;
+            transform: scale(1.1);
         }
+        audio {
+            margin-top: 20px;
+            width: 80%;
+        }
+        /* 🎂 蜡烛样式 */
+        .cake-container {
+            position: relative;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .cake {
+            width: 150px;
+        }
+        .candle {
+            position: absolute;
+            width: 30px;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: opacity 1s ease;
+        }
+        .candle-blown {
+            opacity: 0;
+        }
+        /* 🎂🎶🎈 滚动动画 */
         .floating-emoji {
             font-size: 2rem;
             position: absolute;
@@ -55,16 +86,19 @@
     <h1>🎂 Tanti auguri a te, Gianni! 🎶🎈</h1>
     <p>Tanti auguri a te! 希望我们越来越好！ 🎉</p>
 
-    <!-- 生日蛋糕 -->
-    <img id="cake" class="cake" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Birthday_cake.svg/200px-Birthday_cake.svg.png" onclick="blowCandle()">
-    
+    <!-- 生日蛋糕 + 蜡烛 -->
+    <div class="cake-container">
+        <img id="candle" class="candle" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Candle_flame.svg/40px-Candle_flame.svg.png">
+        <img id="cake" class="cake" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Birthday_cake.svg/200px-Birthday_cake.svg.png" onclick="blowCandle()">
+    </div>
+
     <!-- 音乐 -->
     <audio id="birthday-song" controls>
         <source src="https://www.bensound.com/bensound-music/bensound-happyrock.mp3" type="audio/mpeg">
         您的浏览器不支持音频播放。
     </audio>
 
-    <button onclick="document.getElementById('birthday-song').play()">🎵 点击播放生日快乐歌 🎵</button>
+    <button class="music-btn" onclick="document.getElementById('birthday-song').play()">🎵 点击播放生日快乐歌 🎵</button>
 
     <script>
         document.getElementById('birthday-song').onended = function() {
@@ -72,9 +106,8 @@
         };
 
         function blowCandle() {
-            let cake = document.getElementById("cake");
-            cake.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Birthday_Cake_with_no_candles.svg/200px-Birthday_Cake_with_no_candles.svg.png";
-            cake.classList.add("cake-blown");
+            let candle = document.getElementById("candle");
+            candle.classList.add("candle-blown");
             alert("🎂 你吹灭了蜡烛！许个愿吧！🎉");
         }
 
