@@ -6,7 +6,7 @@
     <title>Happy Birthday, Gianni! 🎂🎶🎈</title>
     <style>
         body {
-            background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fad0c4, #ffdde1);
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4, #ffdde1);
             background-size: 400% 400%;
             animation: gradientBG 10s ease infinite;
             text-align: center;
@@ -24,12 +24,41 @@
             font-size: 3rem;
             font-weight: bold;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-            margin-top: 50px;
+            margin-top: 30px;
         }
         p {
             color: #d81b60;
             font-size: 1.5rem;
         }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        /* 🎂 蜡烛蛋糕 */
+        .cake-box {
+            position: relative;
+            display: inline-block;
+            text-align: center;
+        }
+        .cake {
+            width: 180px;
+            cursor: pointer;
+        }
+        .candle {
+            position: absolute;
+            width: 30px;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: opacity 1s ease;
+        }
+        .candle-blown {
+            opacity: 0;
+        }
+        /* 🎶 音乐按钮 */
         .music-btn {
             background-color: #ff4081;
             color: white;
@@ -50,31 +79,12 @@
             margin-top: 20px;
             width: 80%;
         }
-        /* 🎂 蜡烛样式 */
-        .cake-container {
-            position: relative;
-            display: inline-block;
-            margin-top: 20px;
-        }
-        .cake {
-            width: 150px;
-        }
-        .candle {
-            position: absolute;
-            width: 30px;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            transition: opacity 1s ease;
-        }
-        .candle-blown {
-            opacity: 0;
-        }
         /* 🎂🎶🎈 滚动动画 */
         .floating-emoji {
             font-size: 2rem;
             position: absolute;
-            animation: floatUp 4s linear infinite;
+            animation: floatUp 5s linear infinite;
+            z-index: 10;
         }
         @keyframes floatUp {
             0% { transform: translateY(100vh); opacity: 1; }
@@ -87,9 +97,11 @@
     <p>Tanti auguri a te! 希望我们越来越好！ 🎉</p>
 
     <!-- 生日蛋糕 + 蜡烛 -->
-    <div class="cake-container">
-        <img id="candle" class="candle" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Candle_flame.svg/40px-Candle_flame.svg.png">
-        <img id="cake" class="cake" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Birthday_cake.svg/200px-Birthday_cake.svg.png" onclick="blowCandle()">
+    <div class="container">
+        <div class="cake-box">
+            <img id="candle" class="candle" src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Candle_flame.svg">
+            <img id="cake" class="cake" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Birthday_cake.svg" onclick="blowCandle()">
+        </div>
     </div>
 
     <!-- 音乐 -->
@@ -125,7 +137,7 @@
 
             setTimeout(() => {
                 emoji.remove();
-            }, 4000);
+            }, 5000);
         }
         setInterval(createFloatingEmoji, 500);
     </script>
